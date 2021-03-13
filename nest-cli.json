@@ -1,0 +1,49 @@
+{
+  "collection": "@nestjs/schematics",
+  "sourceRoot": "apps/class-validator-shim-test/src",
+  "monorepo": true,
+  "root": "apps/class-validator-shim-test",
+  "compilerOptions": {
+    "webpack": true,
+    "tsConfigPath": "apps/class-validator-shim-test/tsconfig.app.json",
+    "plugins": [
+      {
+        "name": "@nestjs/swagger",
+        "options": {
+          "classValidatorShim": true,
+          "introspectComments": true,
+          "dtoFileNameSuffix": ["dto.ts", "dtos.ts", "model.ts"]
+        }
+      }
+    ]
+  },
+  "projects": {
+    "class-validator-shim-test": {
+      "type": "application",
+      "root": "apps/class-validator-shim-test",
+      "entryFile": "main",
+      "sourceRoot": "apps/class-validator-shim-test/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/class-validator-shim-test/tsconfig.app.json"
+      }
+    },
+    "secondary": {
+      "type": "application",
+      "root": "apps/secondary",
+      "entryFile": "main",
+      "sourceRoot": "apps/secondary/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/secondary/tsconfig.app.json"
+      }
+    },
+    "entities": {
+      "type": "library",
+      "root": "libs/entities",
+      "entryFile": "index",
+      "sourceRoot": "libs/entities/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/entities/tsconfig.lib.json"
+      }
+    }
+  }
+}
